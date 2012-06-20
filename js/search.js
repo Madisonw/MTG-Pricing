@@ -26,7 +26,6 @@
 		})
 	}
 	function render_card_data(card) {
-		console.log(card);
 		$(search_results).hide();
 		$(pricing_container).empty().show()
 		.append($("<h2 />",{text:card.name+" ("+card.manacost+")"}));
