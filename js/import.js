@@ -5,7 +5,7 @@ $.ajax({
 	dataType : "xml",
 	success : push_into_db
 });
-couch.setDatabase("cards");
+couch.setDatabase("sets_m13");
 function push_into_db(xml) {
 	var xml_sets = $(xml).find("sets set");
 	var xml_cards = $(xml).find("cards card");
@@ -36,7 +36,7 @@ function push_into_db(xml) {
 		})
 		card_objs.push(oObj);
 	})
-	var it_obj = card_objs;
+	var it_obj = set_objs;
 	var index = 0, entry;
 	function push_data() {
 		entry = it_obj[index];
@@ -48,8 +48,8 @@ function push_into_db(xml) {
 		couch.post({
 			data : entry
 		})
-		setTimeout(push_data,10);
+		setTimeout(push_data,1);
 	}
-	//push_data();
+	push_data();
 }
 
